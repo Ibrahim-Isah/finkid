@@ -1,15 +1,30 @@
-import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
-import React, { useState } from 'react';
+import {
+	StyleSheet,
+	Text,
+	View,
+	TextInput,
+	Image,
+	Button,
+	Pressable,
+	ScrollView,
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import * as SecureStore from 'expo-secure-store';
 import { tUser } from '../types';
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../constants/colors';
 
 const EditProfile = () => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [age, setAge] = useState('');
 	const [gender, setGender] = useState('');
+	const [hobby, setHobby] = useState('');
 	const [profilePicture, setProfilePicture] = useState('');
+
+	useEffect(() => {
+		loadProfileInfo();
+	}, []);
 
 	const loadProfileInfo = async () => {
 		try {
@@ -20,6 +35,7 @@ const EditProfile = () => {
 				setLastName(user.lastName || '');
 				setAge(user.age || '');
 				setGender(user.gender || '');
+				setHobby(user.hobby || '');
 				setProfilePicture(user.profilePicture || '');
 			}
 		} catch (e) {
@@ -33,9 +49,10 @@ const EditProfile = () => {
 				lastName,
 				age,
 				gender,
+				hobby,
 				profilePicture,
 			};
-			await SecureStore.setItemAsync('FINKID_USER', JSON.stringify(payload));
+			// await SecureStore.setItemAsync('FINKID_USER', JSON.stringify(payload));
 		} catch (e) {
 			console.log('Error saving profile information:', e);
 		}
@@ -69,48 +86,63 @@ const EditProfile = () => {
 		}
 	};
 	return (
-		<View style={styles.container}>
-			<Text style={styles.heading}>My Profile</Text>
-			<View style={styles.profilePictureContainer}>
-				{profilePicture ? (
-					<Image
-						source={{ uri: profilePicture }}
-						style={styles.profilePicture}
-					/>
-				) : (
-					<Button
-						title='Select Profile Picture'
-						onPress={selectProfilePicture}
-					/>
-				)}
+		<ScrollView>
+			<View style={styles.container}>
+				<Text style={styles.heading}>Edit Profile</Text>
+				<View style={styles.profilePictureContainer}>
+					{profilePicture ? (
+						<Image
+							source={{ uri: profilePicture }}
+							style={styles.profilePicture}
+						/>
+					) : (
+						<Image
+							source={require('../../assets/images/placeholder.jpg')}
+							style={styles.profilePicture}
+						/>
+					)}
+				</View>
+				<View style={styles.buttonContainer}>
+					<Pressable onPress={selectProfilePicture} style={styles.upload}>
+						<Text style={styles.uploadText}>Upload Picture</Text>
+					</Pressable>
+					<Pressable onPress={saveProfileInfo} style={styles.save}>
+						<Text style={styles.saveText}>Save Profile</Text>
+					</Pressable>
+				</View>
+				<TextInput
+					style={styles.input}
+					placeholder='First Name'
+					value={firstName}
+					onChangeText={setFirstName}
+				/>
+				<TextInput
+					style={styles.input}
+					placeholder='Last Name'
+					value={lastName}
+					onChangeText={setLastName}
+				/>
+				<TextInput
+					style={styles.input}
+					placeholder='Age'
+					value={age}
+					keyboardType='numeric'
+					onChangeText={setAge}
+				/>
+				<TextInput
+					style={styles.input}
+					placeholder='Gender'
+					value={gender}
+					onChangeText={setGender}
+				/>
+				<TextInput
+					style={styles.input}
+					placeholder='Hobby '
+					value={hobby}
+					onChangeText={setHobby}
+				/>
 			</View>
-			<TextInput
-				style={styles.input}
-				placeholder='First Name'
-				value={firstName}
-				onChangeText={setFirstName}
-			/>
-			<TextInput
-				style={styles.input}
-				placeholder='Last Name'
-				value={lastName}
-				onChangeText={setLastName}
-			/>
-			<TextInput
-				style={styles.input}
-				placeholder='Age'
-				value={age}
-				keyboardType='numeric'
-				onChangeText={setAge}
-			/>
-			<TextInput
-				style={styles.input}
-				placeholder='Gender'
-				value={gender}
-				onChangeText={setGender}
-			/>
-			<Button title='Save Profile' onPress={saveProfileInfo} />
-		</View>
+		</ScrollView>
 	);
 };
 
@@ -121,6 +153,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		padding: 20,
 		alignItems: 'center',
+		marginVertical: 10,
 	},
 	heading: {
 		fontSize: 24,
@@ -131,6 +164,8 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: 50,
 		borderWidth: 1,
+		borderColor: SECONDARY_COLOR,
+		backgroundColor: '#FFFFFF',
 		borderRadius: 5,
 		padding: 10,
 		marginVertical: 10,
@@ -146,6 +181,34 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		resizeMode: 'cover',
-		borderRadius: 100,
+		borderRadius: 30,
+	},
+	upload: {
+		backgroundColor: '#FFFFFF',
+		borderWidth: 3,
+		borderColor: PRIMARY_COLOR,
+		borderRadius: 10,
+		paddingHorizontal: 20,
+		paddingVertical: 10,
+	},
+	uploadText: {
+		color: PRIMARY_COLOR,
+		fontSize: 16,
+	},
+	saveText: {
+		color: '#FFFFFF',
+		fontSize: 16,
+	},
+	save: {
+		backgroundColor: PRIMARY_COLOR,
+		borderRadius: 10,
+		paddingHorizontal: 20,
+		paddingVertical: 10,
+		marginLeft: 15,
+	},
+	buttonContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		marginVertical: 10,
 	},
 });
