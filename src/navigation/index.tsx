@@ -23,9 +23,6 @@ const Navigation = () => {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{ headerShown: false }}>
 				<Stack.Screen name='Root' component={TabNavigator} />
-				<Stack.Screen name='Home' component={Home} />
-				<Stack.Screen name='Quotes' component={Quotes} />
-				<Stack.Screen name='Profile' component={Profile} />
 				<Stack.Screen name='EditProfile' component={EditProfile} />
 			</Stack.Navigator>
 		</NavigationContainer>

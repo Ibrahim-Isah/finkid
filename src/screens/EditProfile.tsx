@@ -5,6 +5,7 @@ import {
 	TextInput,
 	Image,
 	Button,
+	Alert,
 	Pressable,
 	ScrollView,
 } from 'react-native';
@@ -14,7 +15,7 @@ import * as SecureStore from 'expo-secure-store';
 import { tUser } from '../types';
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../constants/colors';
 
-const EditProfile = () => {
+const EditProfile = ({ navigation }: any) => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [age, setAge] = useState('');
@@ -52,14 +53,19 @@ const EditProfile = () => {
 				hobby,
 				profilePicture,
 			};
-			// await SecureStore.setItemAsync('FINKID_USER', JSON.stringify(payload));
+			await SecureStore.setItemAsync('FINKID_USER', JSON.stringify(payload));
+			Alert.alert(
+				'Success',
+				'Profile information saved successfully',
+				[{ text: 'OK', onPress: () => navigation.navigate('Profile') }],
+				{ cancelable: true }
+			);
 		} catch (e) {
 			console.log('Error saving profile information:', e);
 		}
 	};
 
 	const selectProfilePicture = async () => {
-		// No permissions request is necessary for launching the image library
 		let result: any = await ImagePicker.launchImageLibraryAsync({
 			mediaTypes: ImagePicker.MediaTypeOptions.All,
 			allowsEditing: true,
@@ -69,7 +75,7 @@ const EditProfile = () => {
 
 		console.log(result);
 
-		if (!result.cancelled) {
+		if (!result.canceled) {
 			const response = await fetch(result.assets[0].uri);
 			const imageBase64 = await response.blob().then((blob) => {
 				return new Promise((resolve, reject) => {
@@ -141,6 +147,9 @@ const EditProfile = () => {
 					value={hobby}
 					onChangeText={setHobby}
 				/>
+				<Pressable onPress={saveProfileInfo} style={styles.saveProfile}>
+					<Text style={styles.saveText}>Save Profile</Text>
+				</Pressable>
 			</View>
 		</ScrollView>
 	);
@@ -164,7 +173,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: 50,
 		borderWidth: 1,
-		borderColor: SECONDARY_COLOR,
+		borderColor: PRIMARY_COLOR,
 		backgroundColor: '#FFFFFF',
 		borderRadius: 5,
 		padding: 10,
@@ -194,17 +203,28 @@ const styles = StyleSheet.create({
 	uploadText: {
 		color: PRIMARY_COLOR,
 		fontSize: 16,
+		fontWeight: 'bold',
 	},
 	saveText: {
 		color: '#FFFFFF',
 		fontSize: 16,
+		fontWeight: 'bold',
 	},
 	save: {
 		backgroundColor: PRIMARY_COLOR,
 		borderRadius: 10,
 		paddingHorizontal: 20,
-		paddingVertical: 10,
+		paddingTop: 12,
 		marginLeft: 15,
+	},
+	saveProfile: {
+		backgroundColor: PRIMARY_COLOR,
+		borderRadius: 10,
+		paddingHorizontal: 20,
+		paddingVertical: 15,
+		width: '100%',
+		marginTop: 10,
+		alignItems: 'center',
 	},
 	buttonContainer: {
 		flexDirection: 'row',
