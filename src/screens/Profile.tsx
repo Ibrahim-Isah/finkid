@@ -1,10 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import React from 'react';
 
-const Profile = () => {
+type Props = {
+	navigation: any;
+};
+const Profile = ({ navigation }: Props) => {
+	const editProfile = () => {
+		navigation.navigate('EditProfile');
+	};
 	return (
-		<View>
-			<Text>Profile</Text>
+		<View
+			style={{
+				flex: 1,
+				alignContent: 'center',
+				justifyContent: 'center',
+			}}
+		>
+			<Text>
+				<Button title='Edit Profile' onPress={editProfile} />
+			</Text>
 		</View>
 	);
 };

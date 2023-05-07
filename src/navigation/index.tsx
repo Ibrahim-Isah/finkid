@@ -13,6 +13,7 @@ import {
 } from '../types/navigation.type';
 import { PRIMARY_COLOR } from '../constants/colors';
 import Profile from '../screens/Profile';
+import EditProfile from '../screens/EditProfile';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createMaterialBottomTabNavigator<TabBottomParamList>();
@@ -24,6 +25,8 @@ const Navigation = () => {
 				<Stack.Screen name='Root' component={TabNavigator} />
 				<Stack.Screen name='Home' component={Home} />
 				<Stack.Screen name='Quotes' component={Quotes} />
+				<Stack.Screen name='Profile' component={Profile} />
+				<Stack.Screen name='EditProfile' component={EditProfile} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

@@ -8,5 +8,7 @@ export type RootStackParamList = {
   Home: undefined;
   Quotes: undefined;
   Root: undefined;
+  Profile: undefined;
+  EditProfile: undefined;
 };
 
