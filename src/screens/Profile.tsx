@@ -33,7 +33,9 @@ const Profile = ({ navigation }: Props) => {
 			const user: tUser = JSON.parse(response);
 			if (user) {
 				setUserDetails(user || defaultDetails);
+				return;
 			}
+			setUserDetails(defaultDetails);
 		});
 	}, []);
 
@@ -153,6 +155,7 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 		fontWeight: 'bold',
 		marginBottom: 20,
+		marginTop: 10,
 	},
 	input: {
 		width: '100%',
@@ -199,7 +202,7 @@ const styles = StyleSheet.create({
 		backgroundColor: PRIMARY_COLOR,
 		borderRadius: 10,
 		paddingHorizontal: 20,
-		paddingVertical: 10,
+		paddingTop: 12,
 		marginLeft: 15,
 	},
 	saveProfile: {

@@ -17,7 +17,7 @@ export default function App() {
 			: { ...MD3LightTheme, colors: themeColors.light.colors };
 	return (
 		<PaperProvider theme={paperTheme}>
-			<StatusBar translucent backgroundColor='rgba(0, 0, 0, 0.3)' />
+			<StatusBar translucent backgroundColor='#3D9FC133' />
 			<Navigation />
 		</PaperProvider>
 	);
