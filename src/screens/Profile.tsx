@@ -12,6 +12,7 @@ import { PRIMARY_COLOR } from '../constants/colors';
 import * as SecureStore from 'expo-secure-store';
 import * as ImagePicker from 'expo-image-picker';
 import { tUser } from '../types';
+import GeneralHeader from '../components/GeneralHeader';
 
 type Props = {
 	navigation: any;
@@ -78,7 +79,7 @@ const Profile = ({ navigation }: Props) => {
 	return (
 		<ScrollView>
 			<View style={styles.container}>
-				<Text style={styles.heading}>My Profile</Text>
+				<GeneralHeader title='My Profile' />
 				<View style={styles.profilePictureContainer}>
 					{profilePicture ? (
 						<Image
@@ -150,12 +151,6 @@ const styles = StyleSheet.create({
 		padding: 20,
 		alignItems: 'center',
 		marginVertical: 10,
-	},
-	heading: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		marginBottom: 20,
-		marginTop: 10,
 	},
 	input: {
 		width: '100%',

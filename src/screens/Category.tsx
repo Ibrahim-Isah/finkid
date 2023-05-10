@@ -1,24 +1,25 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import React from 'react';
 import CategoryCard from '../components/CategoryCard';
+import GeneralHeader from '../components/GeneralHeader';
 
-const Category = () => {
+const Category = ({ navigation }: any) => {
 	return (
 		<ScrollView>
 			<View style={styles.container}>
-				<Text style={styles.heading}>Select Category</Text>
+				<GeneralHeader title='Select Category' />
 				<View>
 					<CategoryCard
 						type='junior'
 						onPress={() => {
-							console.log('pressed');
+							navigation.navigate('Junior');
 						}}
 						title='Junior (Age 3 - 9)'
 					/>
 					<CategoryCard
 						type='senior'
 						onPress={() => {
-							console.log('pressed');
+							navigation.navigate('Senior');
 						}}
 						title='Senior (Age 10 - 18)'
 					/>
@@ -36,11 +37,5 @@ const styles = StyleSheet.create({
 		padding: 20,
 		alignItems: 'center',
 		marginVertical: 10,
-	},
-	heading: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		marginBottom: 20,
-		marginTop: 10,
 	},
 });

@@ -14,6 +14,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as SecureStore from 'expo-secure-store';
 import { tUser } from '../types';
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../constants/colors';
+import GeneralHeader from '../components/GeneralHeader';
 
 const EditProfile = ({ navigation }: any) => {
 	const [firstName, setFirstName] = useState('');
@@ -94,7 +95,7 @@ const EditProfile = ({ navigation }: any) => {
 	return (
 		<ScrollView>
 			<View style={styles.container}>
-				<Text style={styles.heading}>Edit Profile</Text>
+				<GeneralHeader title='Edit Profile' />
 				<View style={styles.profilePictureContainer}>
 					{profilePicture ? (
 						<Image
@@ -163,12 +164,6 @@ const styles = StyleSheet.create({
 		padding: 20,
 		alignItems: 'center',
 		marginVertical: 10,
-	},
-	heading: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		marginBottom: 20,
-		marginTop: 10,
 	},
 	input: {
 		width: '100%',
