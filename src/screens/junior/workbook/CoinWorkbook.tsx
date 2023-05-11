@@ -111,7 +111,7 @@ const CoinWorkbook = (props: any) => {
 						) : (
 							<Image
 								key={index}
-								source={require('../../../../assets/images/20nairabk.png')}
+								source={require('../../../../assets/images/50naira.png')}
 								style={styles.img}
 							/>
 						)
@@ -220,8 +220,8 @@ const styles = StyleSheet.create({
 	},
 	img: {
 		resizeMode: 'contain',
-		width: 100,
-		height: 70,
+		width: 90,
+		height: 60,
 	},
 
 	center: {

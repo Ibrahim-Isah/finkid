@@ -10,7 +10,7 @@ type Props = {
 	finish: () => void;
 };
 
-const FiveNaira = (props: Props) => {
+const TenNaira = (props: Props) => {
 	const { ex, finish } = props;
 	const [modalVisible, setModalVisible] = React.useState(false);
 
@@ -25,7 +25,7 @@ const FiveNaira = (props: Props) => {
 		<View style={{ ...styles.exercise, flex: 1 }}>
 			<View style={styles.center}>
 				<Image
-					source={require('../../../../assets/images/5nairafull.png')}
+					source={require('../../../../assets/images/10nairafull.png')}
 					style={styles.dimeImg}
 				/>
 			</View>
@@ -92,7 +92,7 @@ const FiveNaira = (props: Props) => {
 	);
 };
 
-export default FiveNaira;
+export default TenNaira;
 
 const width = Dimensions.get('window').width;
 const phoneWidth = width < 500 ? true : false;

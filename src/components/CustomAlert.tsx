@@ -24,7 +24,7 @@ const CustomAlert = (props: any) => {
 				(props.android &&
 					props.android.title &&
 					props.android.title.fontFamily) ||
-				'Atma-Light',
+				'',
 			fontSize:
 				(props.android &&
 					props.android.title &&
@@ -46,7 +46,7 @@ const CustomAlert = (props: any) => {
 				(props.android &&
 					props.android.message &&
 					props.android.message.fontFamily) ||
-				'Atma-Light',
+				'',
 			fontSize:
 				(props.android &&
 					props.android.message &&
@@ -62,7 +62,7 @@ const CustomAlert = (props: any) => {
 			color:
 				(props.android && props.android.button && props.android.button.color) ||
 				'#387ef5',
-			fontFamily: 'Atma-Light',
+			fontFamily: '',
 			fontSize: 16,
 			fontWeight: '500',
 			textTransform: 'uppercase',
@@ -81,8 +81,7 @@ const CustomAlert = (props: any) => {
 			color:
 				(props.ios && props.ios.title && props.ios.title.color) || '#000000',
 			fontFamily:
-				(props.ios && props.ios.title && props.ios.title.fontFamily) ||
-				'Atma-Light',
+				(props.ios && props.ios.title && props.ios.title.fontFamily) || '',
 			fontSize:
 				(props.ios && props.ios.title && props.ios.title.fontSize) || 17,
 			fontWeight:
@@ -93,8 +92,7 @@ const CustomAlert = (props: any) => {
 				(props.ios && props.ios.message && props.ios.message.color) ||
 				'#000000',
 			fontFamily:
-				(props.ios && props.ios.message && props.ios.message.fontFamily) ||
-				'Atma-Light',
+				(props.ios && props.ios.message && props.ios.message.fontFamily) || '',
 			fontSize:
 				(props.ios && props.ios.message && props.ios.message.fontSize) || 13,
 			fontWeight:
@@ -104,7 +102,7 @@ const CustomAlert = (props: any) => {
 		button: {
 			color:
 				(props.ios && props.ios.button && props.ios.button.color) || '#387ef5',
-			fontFamily: 'Atma-Light',
+			fontFamily: '',
 			fontSize: 17,
 			fontWeight: '500',
 			textTransform: 'none',
