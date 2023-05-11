@@ -5,6 +5,7 @@ import { Animated } from 'react-native';
 import { SOUND } from '../Sound';
 import { Audio } from 'expo-av';
 import { playCorrect } from '../../../utils/sounds';
+import { PRIMARY_COLOR } from '../../../constants/colors';
 
 const CoinWorkbook = (props: any) => {
 	const { ex, finish } = props;
@@ -126,7 +127,7 @@ const CoinWorkbook = (props: any) => {
 										styles.items,
 										{
 											backgroundColor:
-												selectedIndex === i ? selectedOption : '#9c9b9b',
+												selectedIndex === i ? selectedOption : PRIMARY_COLOR,
 											transform:
 												selectedIndex === i
 													? [
@@ -148,17 +149,6 @@ const CoinWorkbook = (props: any) => {
 											color: '#fff',
 										}}
 									>
-										{/* {ex.type === '5naira'
-											? option === 5
-												? '5 naira'
-												: option + ' naira'
-											: ex.type === '10naira'
-											? option * 5 + ' naira'
-											: ex.type === '20naira'
-											? option * 10 + ' naira'
-											: option * 25 === 100
-											? '1 dollar'
-											: option * 25 + ' naira'} */}
 										{ex.type === '5naira'
 											? option * 5 + ' naira'
 											: ex.type === '10naira'
@@ -230,8 +220,8 @@ const styles = StyleSheet.create({
 	},
 	img: {
 		resizeMode: 'contain',
-		width: 50,
-		height: 40,
+		width: 100,
+		height: 70,
 	},
 
 	center: {

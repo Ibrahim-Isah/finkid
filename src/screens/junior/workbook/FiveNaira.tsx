@@ -46,7 +46,7 @@ const FiveNaira = () => {
 		// }, 1000);
 	};
 	return (
-		<View style={styles.exercise}>
+		<View style={{ ...styles.exercise, flex: 1 }}>
 			<View style={styles.center}>
 				<Image
 					source={require('../../../../assets/images/5nairafull.png')}
@@ -90,17 +90,21 @@ const FiveNaira = () => {
 					}}
 				/>
 			</View>
-			<View style={[styles.qtn, styles.center]}>
+			<View style={[styles.qtn, styles.center, { flex: 1 }]}>
 				<Text
 					style={{
 						color: '#000',
-						fontSize: 12,
+						fontSize: 18,
 					}}
 				>
 					{ex.question || 'Question'}
 				</Text>
 			</View>
-			<View>
+			<View
+				style={{
+					flex: 1,
+				}}
+			>
 				<CoinWorkbook
 					ex={ex}
 					finish={() => {

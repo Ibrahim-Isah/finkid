@@ -13,7 +13,13 @@ const Junior = () => {
 				style={styles.background}
 			/>
 			<SafeAreaView style={styles.secondaryContainer}>
-				<GeneralHeader title='Junior Candidate' />
+				<View
+					style={{
+						alignItems: 'center',
+					}}
+				>
+					<GeneralHeader title='Junior Candidate' />
+				</View>
 				<ScrollView contentContainerStyle={styles.grow}>
 					<FiveNaira />
 				</ScrollView>
@@ -33,6 +39,7 @@ const styles = StyleSheet.create({
 	},
 	secondaryContainer: {
 		flex: 1,
+		width: '100%',
 	},
 	background: {
 		position: 'absolute',
@@ -42,5 +49,6 @@ const styles = StyleSheet.create({
 	},
 	grow: {
 		flexGrow: 1,
+		width: '100%',
 	},
 });
