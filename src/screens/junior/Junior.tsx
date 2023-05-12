@@ -46,6 +46,13 @@ const Junior = ({ navigation }: any) => {
 			/>
 
 			<SafeAreaView style={styles.secondaryContainer}>
+				<View
+					style={{
+						alignItems: 'center',
+					}}
+				>
+					<GeneralHeader title={item?.title || 'Category Challenges'} />
+				</View>
 				<View style={styles.centeredView}>
 					<CustomAlert
 						modalVisible={modalVisible}
@@ -66,15 +73,17 @@ const Junior = ({ navigation }: any) => {
 						]}
 					/>
 				</View>
-				<View
-					style={{
-						alignItems: 'center',
-					}}
-				>
-					<GeneralHeader title={item?.title || 'Category Challenges'} />
-				</View>
+
 				<ScrollView contentContainerStyle={styles.grow}>
-					<Text>{item?.text || 'Financial challenges below'}</Text>
+					<Text
+						style={{
+							fontSize: 18,
+							fontWeight: 'normal',
+							marginHorizontal: 10,
+						}}
+					>
+						{item?.text || 'Financial challenges below'}
+					</Text>
 					{item?.exercise?.map((ex, index) => {
 						switch (item.page) {
 							case 1:
@@ -154,7 +163,7 @@ const Junior = ({ navigation }: any) => {
 					)}
 					<Pressable
 						onPress={() => {
-							if (pg >= 5 || !pg) {
+							if (pg >= 4 || !pg) {
 								navigation.navigate('Category');
 								return;
 							} else if (isDone[pg - 1] !== true && pg !== 9 && pg !== 12) {

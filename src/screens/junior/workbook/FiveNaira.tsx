@@ -95,7 +95,7 @@ const FiveNaira = (props: Props) => {
 export default FiveNaira;
 
 const width = Dimensions.get('window').width;
-const phoneWidth = width < 500 ? true : false;
+const phoneWidth = width < 600 ? true : false;
 
 const styles = StyleSheet.create({
 	exercise: {
