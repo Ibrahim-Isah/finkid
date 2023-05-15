@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import TenNaira from './workbook/TenNaira';
 import TwentyNaira from './workbook/TwentyNaira';
 import FiftyNaira from './workbook/FiftyNaira';
+import DragGame from './workbook/DragGame';
 
 const Junior = ({ navigation }: any) => {
 	const [sound, setSound] = useState<any>(null);
@@ -74,71 +75,160 @@ const Junior = ({ navigation }: any) => {
 					/>
 				</View>
 
-				<ScrollView contentContainerStyle={styles.grow}>
-					<Text
-						style={{
-							fontSize: 18,
-							fontWeight: 'normal',
-							marginHorizontal: 10,
-						}}
-					>
-						{item?.text || 'Financial challenges below'}
-					</Text>
-					{item?.exercise?.map((ex, index) => {
-						switch (item.page) {
-							case 1:
-								return (
-									<FiveNaira
-										key={index}
-										ex={ex}
-										finish={() => {
-											setPg((p) => p + 1);
-										}}
-									/>
-								);
-							case 2:
-								return (
-									<TenNaira
-										key={index}
-										ex={ex}
-										finish={() => {
-											setPg((p) => p + 1);
-										}}
-									/>
-								);
-							case 3:
-								return (
-									<TwentyNaira
-										key={index}
-										ex={ex}
-										finish={() => {
-											setPg((p) => p + 1);
-										}}
-									/>
-								);
-							case 4:
-								return (
-									<FiftyNaira
-										key={index}
-										ex={ex}
-										finish={() => {
-											setPg((p) => p + 1);
-										}}
-									/>
-								);
-							default:
-								return (
-									<FiveNaira
-										key={index}
-										ex={ex}
-										finish={() => {
-											setPg((p) => p + 1);
-										}}
-									/>
-								);
-						}
-					})}
-				</ScrollView>
+				{[1, 2, 3, 4].includes(pg) ? (
+					<ScrollView contentContainerStyle={styles.grow}>
+						<Text
+							style={{
+								fontSize: 18,
+								fontWeight: 'normal',
+								marginHorizontal: 10,
+							}}
+						>
+							{item?.text || 'Financial challenges below'}
+						</Text>
+						{item?.exercise?.map((ex, index) => {
+							switch (item.page) {
+								case 1:
+									return (
+										<FiveNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								case 2:
+									return (
+										<TenNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								case 3:
+									return (
+										<TwentyNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								case 4:
+									return (
+										<FiftyNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								case 5:
+									return (
+										<DragGame
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								default:
+									return (
+										<FiveNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+							}
+						})}
+					</ScrollView>
+				) : (
+					<View style={styles.grow}>
+						<Text
+							style={{
+								fontSize: 18,
+								fontWeight: 'normal',
+								marginHorizontal: 10,
+							}}
+						>
+							{item?.text || 'Financial challenges below'}
+						</Text>
+						{item?.exercise?.map((ex, index) => {
+							switch (item.page) {
+								case 1:
+									return (
+										<FiveNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								case 2:
+									return (
+										<TenNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								case 3:
+									return (
+										<TwentyNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								case 4:
+									return (
+										<FiftyNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								case 5:
+									return (
+										<DragGame
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+								default:
+									return (
+										<FiveNaira
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
+							}
+						})}
+					</View>
+				)}
+
 				<View
 					style={
 						pg > 1
@@ -163,7 +253,7 @@ const Junior = ({ navigation }: any) => {
 					)}
 					<Pressable
 						onPress={() => {
-							if (pg >= 4 || !pg) {
+							if (pg >= 5 || !pg) {
 								navigation.navigate('Category');
 								return;
 							} else if (isDone[pg - 1] !== true && pg !== 9 && pg !== 12) {

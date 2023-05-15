@@ -99,4 +99,23 @@ export const juniorData = [
       },
     ],
   },
+  {
+    id: 5,
+    page: 5,
+    title: "Coin Match",
+    text: "Let us identify the popular coins inthe USA",
+    image: "",
+    exercise: [
+      {
+        id: 1,
+        question: "Drag coin from the left to its value on the right",
+        options: [
+          { image: "quarter.png", name: "Quarter" },
+          { image: "penny.png", name: "Penny" },
+          { image: "nickel.png", name: "Nickel" },
+          { image: "dime.png", name: "Dime" },
+        ],
+      },
+    ],
+  },
 ]

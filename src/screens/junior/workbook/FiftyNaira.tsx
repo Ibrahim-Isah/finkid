@@ -26,7 +26,7 @@ const FiftyNaira = (props: Props) => {
 			<View style={styles.center}>
 				<Image
 					source={require('../../../../assets/images/50nairafull.png')}
-					style={styles.dimeImg}
+					style={styles.noteImg}
 				/>
 			</View>
 			<View style={styles.centeredView}>
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
 		width: sizeWidth(8),
 		height: sizeHeight(6),
 	},
-	dimeImg: {
+	noteImg: {
 		resizeMode: 'contain',
 		width: sizeWidth(45),
 		height: sizeHeight(12),
