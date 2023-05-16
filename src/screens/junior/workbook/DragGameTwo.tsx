@@ -12,16 +12,16 @@ const { width, height } = Dimensions.get('window');
 const itemHeight = height < 730 ? height / 9 : height / 7;
 
 const options = [
-	{ image: require('../../../../assets/images/5naira.png'), name: 'Five' },
 	{ image: require('../../../../assets/images/10naira.png'), name: 'Ten' },
-	{ image: require('../../../../assets/images/20naira.png'), name: 'Twenty' },
 	{ image: require('../../../../assets/images/50naira.png'), name: 'Fifty' },
+	{ image: require('../../../../assets/images/5naira.png'), name: 'Five' },
+	{ image: require('../../../../assets/images/20naira.png'), name: 'Twenty' },
 ];
 type Props = {
 	ex: any;
 	finish: () => void;
 };
-const DragGame = (props: Props) => {
+const DragGameTwo = (props: Props) => {
 	const { finish } = props;
 	const [selected, setSeleted] = useState<Object[]>([]);
 	const [reverse, setReverse] = useState<boolean>(true);
@@ -63,11 +63,14 @@ const DragGame = (props: Props) => {
 		id: string
 	) => {
 		if (X! < gestureState.moveX) {
-			if (gestureState.moveY >= FiveNaira! && gestureState.moveY < TenNaira!) {
-				if (id === 'Five') {
+			if (
+				gestureState.moveY >= TwentyNaira! &&
+				gestureState.moveY < FiftyNaira!
+			) {
+				if (id === 'Twenty') {
 					setSorted({
 						...sorted,
-						FiveNaira: true,
+						TwentyNaira: true,
 					});
 					playSound('correct');
 					//setModalVisible(true);
@@ -81,13 +84,13 @@ const DragGame = (props: Props) => {
 				}
 			}
 			if (
-				gestureState.moveY >= TenNaira! &&
-				gestureState.moveY <= TwentyNaira!
+				gestureState.moveY >= FiftyNaira! &&
+				gestureState.moveY <= TenNaira!
 			) {
-				if (id === 'Ten') {
+				if (id === 'Fifty') {
 					setSorted({
 						...sorted,
-						TenNaira: true,
+						FiftyNaira: true,
 					});
 					playSound('correct');
 					//setModalVisible(true);
@@ -101,14 +104,11 @@ const DragGame = (props: Props) => {
 					setModalMessage('False , Try again!');
 				}
 			}
-			if (
-				gestureState.moveY >= TwentyNaira! &&
-				gestureState.moveY <= FiftyNaira!
-			) {
-				if (id === 'Twenty') {
+			if (gestureState.moveY >= TenNaira! && gestureState.moveY <= FiveNaira!) {
+				if (id === 'Ten') {
 					setSorted({
 						...sorted,
-						TwentyNaira: true,
+						TenNaira: true,
 					});
 					playSound('correct');
 					//setModalVisible(true);
@@ -122,13 +122,13 @@ const DragGame = (props: Props) => {
 				}
 			}
 			if (
-				gestureState.moveY >= FiftyNaira! &&
-				gestureState.moveY <= FiftyNaira! + itemHeight
+				gestureState.moveY >= FiveNaira! &&
+				gestureState.moveY <= FiveNaira! + itemHeight
 			) {
-				if (id === 'Fifty') {
+				if (id === 'Five') {
 					setSorted({
 						...sorted,
-						FiftyNaira: true,
+						FiveNaira: true,
 					});
 					playSound('correct');
 					//setModalVisible(true);
@@ -164,7 +164,7 @@ const DragGame = (props: Props) => {
 								pageX: any,
 								pageY: any
 							) => {
-								setFiveNaira(y + pageY);
+								setTwentyNaira(y + pageY);
 								setX(pageX);
 							}
 						);
@@ -172,7 +172,26 @@ const DragGame = (props: Props) => {
 					style={styles.dropC}
 				>
 					<View style={styles.item}>
-						<Text style={styles.noteText}>5 Naira</Text>
+						<Text style={styles.noteText}>20 Naira</Text>
+					</View>
+					<View
+						onLayout={(event: any) => {
+							event.target.measure(
+								(
+									x: any,
+									y: any,
+									width: any,
+									height: any,
+									pageX: any,
+									pageY: any
+								) => {
+									setFiftyNaira(pageY);
+								}
+							);
+						}}
+						style={[{ ...styles.item, backgroundColor: '#6A809E' }]}
+					>
+						<Text style={styles.noteText}>50 Naira</Text>
 					</View>
 					<View
 						onLayout={(event: any) => {
@@ -204,32 +223,13 @@ const DragGame = (props: Props) => {
 									pageX: any,
 									pageY: any
 								) => {
-									setTwentyNaira(pageY);
+									setFiveNaira(pageY);
 								}
 							);
 						}}
-						style={[{ ...styles.item, backgroundColor: '#4D6151' }]}
+						style={[{ ...styles.item, backgroundColor: '#D0B99F' }]}
 					>
-						<Text style={styles.noteText}>20 Naira</Text>
-					</View>
-					<View
-						onLayout={(event: any) => {
-							event.target.measure(
-								(
-									x: any,
-									y: any,
-									width: any,
-									height: any,
-									pageX: any,
-									pageY: any
-								) => {
-									setFiftyNaira(pageY);
-								}
-							);
-						}}
-						style={[{ ...styles.item, backgroundColor: '#6A809E' }]}
-					>
-						<Text style={styles.noteText}>50 Naira</Text>
+						<Text style={styles.noteText}>5 Naira</Text>
 					</View>
 				</View>
 				<View style={styles.centeredView}>
@@ -275,7 +275,7 @@ const DragGame = (props: Props) => {
 	);
 };
 
-export default DragGame;
+export default DragGameTwo;
 
 const styles = StyleSheet.create({
 	column: {
@@ -286,7 +286,7 @@ const styles = StyleSheet.create({
 		width: width / 2,
 	},
 	item: {
-		backgroundColor: '#D0B99F',
+		backgroundColor: '#4D6151',
 		padding: height > 1200 ? 50 : 30,
 		margin: height > 1200 ? 30 : 15,
 		color: '#fff',

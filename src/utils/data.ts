@@ -102,18 +102,56 @@ export const juniorData = [
   {
     id: 5,
     page: 5,
-    title: "Coin Match",
-    text: "Let us identify the popular coins inthe USA",
+    title: "Drag and Drop",
+    text: "Identify the Naira Notes below by dragging and dropping each note on the right place.",
     image: "",
     exercise: [
       {
         id: 1,
         question: "Drag coin from the left to its value on the right",
         options: [
-          { image: "quarter.png", name: "Quarter" },
-          { image: "penny.png", name: "Penny" },
-          { image: "nickel.png", name: "Nickel" },
-          { image: "dime.png", name: "Dime" },
+          { image: "five.png", name: "Five" },
+          { image: "ten.png", name: "Ten" },
+          { image: "twenty.png", name: "Twenty" },
+          { image: "fifty.png", name: "Fifty" },
+        ],
+      },
+    ],
+  },
+  {
+    id: 6,
+    page: 6,
+    title: "Drag and Drop",
+    text: "Identify the Naira Notes below by dragging and dropping each note on the right place.",
+    image: "",
+    exercise: [
+      {
+        id: 1,
+        question: "Drag coin from the left to its value on the right",
+        options: [
+          { image: "five.png", name: "Five" },
+          { image: "ten.png", name: "Ten" },
+          { image: "twenty.png", name: "Twenty" },
+          { image: "fifty.png", name: "Fifty" },
+        ],
+      },
+    ],
+  },
+  {
+    id: 7,
+    page: 7,
+    title: "Drag and Drop",
+    text: "Identify the Naira Notes below by dragging and dropping each note on the right place.",
+    image: "",
+    exercise: [
+      {
+        id: 1,
+        question: "Drag coin from the left to its value on the right",
+        options: [
+          { image: "five.png", name: "Five" },
+          { image: "ten.png", name: "Ten" },
+          { image: "twenty.png", name: "Twenty" },
+          { image: "fifty.png", name: "Fifty" },
         ],
       },
     ],

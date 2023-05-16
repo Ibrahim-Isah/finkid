@@ -13,6 +13,7 @@ import TenNaira from './workbook/TenNaira';
 import TwentyNaira from './workbook/TwentyNaira';
 import FiftyNaira from './workbook/FiftyNaira';
 import DragGame from './workbook/DragGame';
+import DragGameTwo from './workbook/DragGameTwo';
 
 const Junior = ({ navigation }: any) => {
 	const [sound, setSound] = useState<any>(null);
@@ -138,6 +139,16 @@ const Junior = ({ navigation }: any) => {
 											}}
 										/>
 									);
+								case 6:
+									return (
+										<DragGameTwo
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
 								default:
 									return (
 										<FiveNaira
@@ -214,6 +225,16 @@ const Junior = ({ navigation }: any) => {
 											}}
 										/>
 									);
+								case 6:
+									return (
+										<DragGameTwo
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
 								default:
 									return (
 										<FiveNaira
@@ -253,7 +274,7 @@ const Junior = ({ navigation }: any) => {
 					)}
 					<Pressable
 						onPress={() => {
-							if (pg >= 5 || !pg) {
+							if (pg >= 6 || !pg) {
 								navigation.navigate('Category');
 								return;
 							} else if (isDone[pg - 1] !== true && pg !== 9 && pg !== 12) {
