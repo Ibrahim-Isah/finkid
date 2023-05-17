@@ -156,4 +156,18 @@ export const juniorData = [
       },
     ],
   },
+  {
+    id: 8,
+    page: 8,
+    title: "Let's Shop",
+    text: "pick the coins below to show how much you need to buy this little bunny.",
+    image: "",
+    exercise: [
+      {
+        id: 1,
+        options: [],
+        answer: "25 Naira",
+      },
+    ],
+  },
 ]

@@ -245,8 +245,8 @@ const DragGameTwo = (props: Props) => {
 							<Draggable
 								imageSource={op.image}
 								renderSize={60}
-								renderWidth={150}
-								renderHeight={80}
+								renderWidth={sizeWidth(36)}
+								renderHeight={sizeHeight(10)}
 								x={20}
 								y={10 + index * sizeHeight(15)}
 								onDragRelease={(event, gestureState, bounds) =>
