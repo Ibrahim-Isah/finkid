@@ -184,3 +184,16 @@ export const juniorData = [
     ],
   },
 ]
+
+
+export const chaptersList = [
+  { title: "Introduction", icon: "hourglass-start" },
+  { title: "Budgeting", icon: "list-alt" },
+  { title: "Savings", icon: "piggy-bank" },
+  { title: "Debt", icon: "money-check" },
+  { title: "Spending", icon: "money-bill-alt" },
+  { title: "Income", icon: "cash-register" },
+  { title: "Investing", icon: "house-user" },
+  { title: "Crypto", icon: "bitcoin" },
+  { title: "Conclusion", icon: "hourglass-end" },
+]
