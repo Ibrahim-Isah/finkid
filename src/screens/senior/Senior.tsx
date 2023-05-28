@@ -40,9 +40,14 @@ const Senior = () => {
 	return (
 		<ScrollView>
 			<View style={styles.container}>
-				<GeneralHeader title='Select Chapter' />
+				<View
+					style={{
+						alignItems: 'center',
+					}}
+				>
+					<GeneralHeader title='Select Chapter' />
+				</View>
 				<FlatList
-					// ListHeaderComponent={renderHeader}
 					data={data}
 					renderItem={renderItem}
 					keyExtractor={(item) => item.title}
