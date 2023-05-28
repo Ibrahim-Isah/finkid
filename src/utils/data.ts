@@ -170,4 +170,17 @@ export const juniorData = [
       },
     ],
   },
+  {
+    id: 9,
+    page: 9,
+    title: "Making Lemonade!",
+    text: "Lulu wants a new game. It costs 250 Naira. To earn money Lulu has a lemonade stand. Each glass of lemonade costs 5 Naira. Tell how many glass lulu needs to sell to buy the game. (Hint: 250 divided by 5)",
+    image: "",
+    exercise: [
+      {
+        id: 1,
+        options: [],
+      },
+    ],
+  },
 ]

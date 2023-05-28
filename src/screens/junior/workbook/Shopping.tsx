@@ -67,16 +67,16 @@ const Shopping = (props: Props) => {
 			gestureState.moveY < dropArea?.endY &&
 			gestureState.moveY > dropArea?.startY
 		) {
-			if (selected.find((i) => i.name === item.name) === undefined) {
+			if (selected.find((i: any) => i.name === item.name) === undefined) {
 				setSeleted([...selected, item]);
 			}
 		} else {
-			setSeleted(selected.filter((i) => i.name !== item.name));
+			setSeleted(selected.filter((i: any) => i.name !== item.name));
 		}
 	};
 	useEffect(() => {
 		let calc = 0;
-		selected.map((item) => {
+		selected.map((item: any) => {
 			calc += item.value;
 		});
 

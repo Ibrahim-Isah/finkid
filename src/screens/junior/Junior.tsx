@@ -16,6 +16,7 @@ import DragGame from './workbook/DragGame';
 import DragGameTwo from './workbook/DragGameTwo';
 import DragGameThree from './workbook/DragGameThree';
 import Shopping from './workbook/Shopping';
+import Lemonade from './workbook/Lemonade';
 
 const Junior = ({ navigation }: any) => {
 	const [sound, setSound] = useState<any>(null);
@@ -171,6 +172,16 @@ const Junior = ({ navigation }: any) => {
 											}}
 										/>
 									);
+								case 9:
+									return (
+										<Lemonade
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
 								default:
 									return (
 										<FiveNaira
@@ -277,6 +288,16 @@ const Junior = ({ navigation }: any) => {
 											}}
 										/>
 									);
+								case 9:
+									return (
+										<Lemonade
+											key={index}
+											ex={ex}
+											finish={() => {
+												setPg((p) => p + 1);
+											}}
+										/>
+									);
 								default:
 									return (
 										<FiveNaira
@@ -316,7 +337,7 @@ const Junior = ({ navigation }: any) => {
 					)}
 					<Pressable
 						onPress={() => {
-							if (pg >= 8 || !pg) {
+							if (pg === 9 || !pg) {
 								navigation.navigate('Category');
 								return;
 							} else if (isDone[pg - 1] !== true && pg !== 9 && pg !== 12) {
