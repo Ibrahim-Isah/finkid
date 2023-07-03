@@ -17,6 +17,7 @@ import EditProfile from '../screens/EditProfile';
 import Category from '../screens/Category';
 import Junior from '../screens/junior/Junior';
 import Senior from '../screens/senior/Senior';
+import Read from '../screens/senior/Read';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createMaterialBottomTabNavigator<TabBottomParamList>();
@@ -30,6 +31,7 @@ const Navigation = () => {
 				<Stack.Screen name='Category' component={Category} />
 				<Stack.Screen name='Junior' component={Junior} />
 				<Stack.Screen name='Senior' component={Senior} />
+				<Stack.Screen name='Read' component={Read} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

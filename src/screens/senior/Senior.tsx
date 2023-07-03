@@ -23,7 +23,7 @@ const Item = ({ title, icon }: any) => (
 	</View>
 );
 
-const Senior = () => {
+const Senior = ({ navigation }: any) => {
 	const [data, setData] = useState<{ title: string; icon: string }[]>();
 
 	useEffect(() => {
@@ -31,7 +31,9 @@ const Senior = () => {
 	}, []);
 
 	const renderItem = ({ item }: { item: { title: string; icon: string } }) => (
-		<Pressable onPress={() => console.log(item)}>
+		<Pressable
+			onPress={() => navigation.navigate('Read', { chapter: item.title })}
+		>
 			{item.title !== 'Workbook' && (
 				<Item title={item.title} icon={item.icon} />
 			)}
