@@ -11,4 +11,5 @@ export type RootStackParamList = {
 	Junior: undefined;
 	Senior: undefined;
 	Read: undefined;
+	Intro: undefined;
 };

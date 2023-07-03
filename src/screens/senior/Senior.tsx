@@ -32,7 +32,7 @@ const Senior = ({ navigation }: any) => {
 
 	const renderItem = ({ item }: { item: { title: string; icon: string } }) => (
 		<Pressable
-			onPress={() => navigation.navigate('Read', { chapter: item.title })}
+			onPress={() => navigation.navigate('Intro', { chapter: item.title })}
 		>
 			{item.title !== 'Workbook' && (
 				<Item title={item.title} icon={item.icon} />
