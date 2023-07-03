@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { contents } from '../../utils/contents';
-import { ScrollView } from 'react-native-gesture-handler';
+import React, { useEffect, useState } from 'react';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import GeneralHeader from '../../components/GeneralHeader';
+import { NextButton } from '../../components/NextPrev';
+import { contents } from '../../utils/contents';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -24,17 +25,35 @@ const Intro = ({ route, navigation }: any) => {
 				source={require('../../../assets/images/freetrail2.png')}
 				style={styles.background}
 			/>
-			<View style={{ flex: 1, justifyContent: 'center' }}>
-				<View style={styles.container}>
-					<View style={styles.headerTextContainer}>
-						<Text style={styles.headerText}>{currentChapter.title}</Text>
-						<Text style={styles.subText}>Brief Introduction</Text>
-						<View style={styles.wrapper}>
-							<Text style={styles.text}>{currentChapter.intro}</Text>
+			<SafeAreaView style={{ flex: 1 }}>
+				<View>
+					<GeneralHeader title={chapter} />
+				</View>
+				<View style={{ flex: 1, justifyContent: 'center' }}>
+					<View style={styles.container}>
+						<View style={styles.headerTextContainer}>
+							<Text style={styles.headerText}>{currentChapter.title}</Text>
+							<Text style={styles.subText}>Brief Introduction</Text>
+							<View style={styles.wrapper}>
+								<Text style={styles.text}>{currentChapter.intro}</Text>
+							</View>
 						</View>
 					</View>
 				</View>
-			</View>
+				<View
+					style={{
+						display: 'flex',
+						flexDirection: 'row',
+						justifyContent: 'flex-end',
+						marginBottom: 15,
+						marginRight: 5,
+					}}
+				>
+					<NextButton
+						onPress={() => navigation.navigate('Read', { chapter })}
+					/>
+				</View>
+			</SafeAreaView>
 		</View>
 	);
 };

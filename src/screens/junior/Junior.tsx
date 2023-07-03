@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import {
+	StyleSheet,
+	Text,
+	View,
+	Image,
+	Pressable,
+	TouchableOpacity,
+} from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import GeneralHeader from '../../components/GeneralHeader';
@@ -17,6 +24,7 @@ import DragGameTwo from './workbook/DragGameTwo';
 import DragGameThree from './workbook/DragGameThree';
 import Shopping from './workbook/Shopping';
 import Lemonade from './workbook/Lemonade';
+import { NextButton, PreviousButton } from '../../components/NextPrev';
 
 const Junior = ({ navigation }: any) => {
 	const [sound, setSound] = useState<any>(null);
@@ -330,12 +338,9 @@ const Junior = ({ navigation }: any) => {
 							  }
 					}
 				>
-					{pg > 1 && (
-						<Pressable onPress={() => setPg((p) => p - 1)}>
-							<Icon name='arrow-left' size={28} color='black' />
-						</Pressable>
-					)}
-					<Pressable
+					{pg > 1 && <PreviousButton onPress={() => setPg((p) => p - 1)} />}
+
+					<NextButton
 						onPress={() => {
 							if (pg === 9 || !pg) {
 								navigation.navigate('Category');
@@ -347,20 +352,29 @@ const Junior = ({ navigation }: any) => {
 								setPg((p) => p + 1);
 							}
 						}}
-					>
-						<Icon name='arrow-right' size={28} color='black' />
-					</Pressable>
+					/>
 				</View>
-				<View>
+				<View
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginVertical: 5,
+					}}
+				>
 					{sound ? (
-						<Icon
-							name='pause'
-							size={28}
-							color='black'
+						<TouchableOpacity
+							style={{ ...styles.button, backgroundColor: '#007AFF' }}
 							onPress={() => setSound(null)}
-						/>
+						>
+							<Icon name='pause' size={24} color='#FFFFFF' />
+						</TouchableOpacity>
 					) : (
-						<Icon name='play' size={28} color='green' onPress={playSound} />
+						<TouchableOpacity
+							style={{ ...styles.button, backgroundColor: '#000000' }}
+							onPress={playSound}
+						>
+							<Icon name='play' size={24} color='#FFFFFF' />
+						</TouchableOpacity>
 					)}
 				</View>
 			</SafeAreaView>
@@ -376,6 +390,11 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'flex-end',
 		width: '100%',
+	},
+	button: {
+		borderRadius: 20,
+		paddingHorizontal: 12,
+		paddingVertical: 8,
 	},
 	secondaryContainer: {
 		flex: 1,
