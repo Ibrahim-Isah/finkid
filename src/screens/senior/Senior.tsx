@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import React, { useEffect, useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import GeneralHeader from '../../components/GeneralHeader';
+import { PRIMARY_COLOR } from '../../constants/colors';
 import { chaptersList } from '../../utils/data';
 import { sizeWidth } from '../../utils/size';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { PRIMARY_COLOR } from '../../constants/colors';
 
 const Item = ({ title, icon }: any) => (
 	<View>
@@ -40,22 +41,14 @@ const Senior = ({ navigation }: any) => {
 		</Pressable>
 	);
 	return (
-		<ScrollView>
-			<View style={styles.container}>
-				<View
-					style={{
-						alignItems: 'center',
-					}}
-				>
-					<GeneralHeader title='Select Chapter' />
-				</View>
-				<FlatList
-					data={data}
-					renderItem={renderItem}
-					keyExtractor={(item) => item.title}
-				/>
-			</View>
-		</ScrollView>
+		<SafeAreaView>
+			<FlatList
+				data={data}
+				renderItem={renderItem}
+				keyExtractor={(item) => item.title}
+				ListHeaderComponent={() => <GeneralHeader title='Select Chapter' />}
+			/>
+		</SafeAreaView>
 	);
 };
 

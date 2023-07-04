@@ -4,6 +4,9 @@ import { contents } from '../../utils/contents';
 import { ScrollView } from 'react-native-gesture-handler';
 import GeneralHeader from '../../components/GeneralHeader';
 import { NextButton, PreviousButton } from '../../components/NextPrev';
+import Readlist from '../../components/Readlist';
+import Tabular from '../../components/Tabular';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Read = ({ route, navigation }: any) => {
 	const { chapter } = route.params;
@@ -26,20 +29,14 @@ const Read = ({ route, navigation }: any) => {
 			setCurrent((y) => y + 1);
 		} else {
 			// navigation.navigate('Workbook');
-			console.log('Nothing to Navigate to');
+			navigation.navigate('Senior');
 		}
 	};
 
 	return (
-		<ScrollView contentContainerStyle={styles.content}>
-			<View style={styles.container}>
-				<View
-					style={{
-						alignItems: 'center',
-					}}
-				>
-					<GeneralHeader title={chapter} />
-				</View>
+		<View style={styles.container}>
+			<GeneralHeader title={chapter} />
+			<ScrollView contentContainerStyle={styles.content}>
 				<View
 					style={{
 						margin: 20,
@@ -48,12 +45,14 @@ const Read = ({ route, navigation }: any) => {
 					<Text style={styles.title}>{cards[current]?.title || chapter}</Text>
 					<Text style={styles.text}>{cards[current]?.text}</Text>
 				</View>
-			</View>
+				{cards[current]?.list && <Readlist data={cards[current]?.list || []} />}
+				{cards[current]?.table && <Tabular data={cards[current]?.table} />}
+			</ScrollView>
 			<View style={styles.both}>
 				<PreviousButton onPress={back} />
 				<NextButton onPress={next} />
 			</View>
-		</ScrollView>
+		</View>
 	);
 };
 
@@ -62,8 +61,10 @@ export default Read;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 20,
-		marginVertical: 10,
+		alignItems: 'center',
+		justifyContent: 'flex-end',
+		width: '100%',
+		marginTop: 30,
 	},
 	content: {
 		flexGrow: 1,
