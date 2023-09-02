@@ -342,7 +342,7 @@ const Junior = ({ navigation }: any) => {
 
 					<NextButton
 						onPress={() => {
-							if (pg === 9 || !pg) {
+							if (pg >= 9 || !pg) {
 								navigation.navigate('Category');
 								return;
 							} else if (isDone[pg - 1] !== true && pg !== 9 && pg !== 12) {
