@@ -1,20 +1,24 @@
+import {
+	MD3DarkTheme,
+	MD3LightTheme,
+	Provider as PaperProvider,
+} from 'react-native-paper';
+import { useColorScheme } from 'react-native';
+import Navigation from './src/navigation';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import 'react-native-gesture-handler';
+import { themeColors } from './src/constants/colors';
 export default function App() {
+	const colorScheme = useColorScheme();
+
+	const paperTheme =
+		colorScheme === 'dark'
+			? { ...MD3DarkTheme, colors: themeColors.dark.colors }
+			: { ...MD3LightTheme, colors: themeColors.light.colors };
 	return (
-		<View style={styles.container}>
-			<Text>Open up App.js to start working on your app!</Text>
-			<StatusBar style='auto' />
-		</View>
+		<PaperProvider theme={paperTheme}>
+			<StatusBar translucent backgroundColor='#3D9FC133' />
+			<Navigation />
+		</PaperProvider>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});
